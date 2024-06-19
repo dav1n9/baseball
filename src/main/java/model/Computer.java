@@ -8,12 +8,12 @@ import java.util.List;
 
 public class Computer {
 
-    private String number;
+    private final String number;
 
     public Computer() {
         String randomNum = getRandomNumber();   // 랜덤으로 숫자 생성
-        if (Validator.isValidateNumber(randomNum))
-            this.number = randomNum;
+        Validator.validateNumber(randomNum);
+        this.number = randomNum;
     }
 
     public String getNumber() {

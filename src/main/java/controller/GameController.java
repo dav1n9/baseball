@@ -22,11 +22,9 @@ public class GameController {
     }
 
     public User inputUserNumber(String number) {
-        if (Validator.isValidateNumber(number)) {
-            count++;      // 잘못된 값을 입력할 경우는 count 에 포함하지 않음.
-            return new User(number);
-        }
-        throw new IllegalArgumentException("잘못된 입력입니다. 다시 시도해 주세요.");
+        Validator.validateNumber(number);
+        count++;      // 잘못된 값을 입력할 경우는 count 에 포함하지 않음.
+        return new User(number);
     }
 
     public String answer(User number) {

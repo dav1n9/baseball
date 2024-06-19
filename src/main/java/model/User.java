@@ -10,8 +10,8 @@ public class User {
     private String number;
 
     public User(String number) {
-        if (Validator.isValidateNumber(number))
-            this.number = number;
+        Validator.validateNumber(number);
+        this.number = number;
     }
 
     public String getNumber() {
@@ -19,8 +19,8 @@ public class User {
     }
 
     public void setNumber(String number) {
-        if (Validator.isValidateNumber(number))
-            this.number = number;
+        Validator.validateNumber(number);
+        this.number = number;
     }
 
     // number의 스트라이크 개수를 출력한다.
