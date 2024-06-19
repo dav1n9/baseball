@@ -3,6 +3,8 @@ package controller;
 import model.Computer;
 import model.User;
 import validator.Validator;
+import view.InputView;
+import view.OutputView;
 
 public class GameController {
     private final Computer answer;
@@ -24,6 +26,22 @@ public class GameController {
 
     public int getCount() {
         return count;
+    }
+
+    public void gameStart() {
+        OutputView.showStartGameView();
+        User user = null;
+        do {
+            try {
+                OutputView.showInputCount(count + 1);
+                user = inputUserNumber(InputView.readUserNumber());
+            } catch (IllegalArgumentException e) {
+                OutputView.showExceptionMessage(e.getMessage());
+                continue;
+            }
+            OutputView.showResult(answer(user));
+        } while (user == null || !isCorrectAnswer(user.getNumber()));
+        OutputView.showEndGameView(count);
     }
 
     public User inputUserNumber(String number) {
