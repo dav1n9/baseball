@@ -13,19 +13,19 @@ public class Validator {
         validateUnique(number);
     }
 
-    private static void validateLength(String number) {
+    public static void validateLength(String number) {
         if (number.length() != Constant.NUMBER_SIZE)
             throw new IllegalArgumentException(Constant.NUMBER_SIZE + "자리이어야 합니다.");
     }
 
-    private static void validateDigits(String number) {
+    public static void validateDigits(String number) {
         for (int i = 0; i < number.length(); i++) {
             if (!Character.isDigit(number.charAt(i)))
                 throw new IllegalArgumentException("0과 9사이의 숫자를 입력해야 합니다.");
         }
     }
 
-    private static void validateUnique(String number) {
+    public static void validateUnique(String number) {
         Set<Character> set = new HashSet<>();
         for (int i = 0; i < number.length(); i++) {
             set.add(number.charAt(i));
