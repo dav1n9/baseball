@@ -33,7 +33,8 @@ public class GameController {
         int strike = number.getStrike(answer);
         int ball = number.getBall(answer);
 
-        if (strike == 0) return ball + "B";
+        if (strike == 0 && ball == 0) return strike + "S" + ball + "B";
+        else if (strike == 0) return ball + "B";
         else if (ball == 0) return strike + "S";
 
         return strike + "S" + ball + "B";
