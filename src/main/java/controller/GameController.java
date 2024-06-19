@@ -13,6 +13,11 @@ public class GameController {
         this.count = 0;
     }
 
+    public GameController(Computer computer) {
+        answer = computer;
+        this.count = 0;
+    }
+
     public String getAnswerNumber() {
         return answer.getNumber();
     }
@@ -28,8 +33,8 @@ public class GameController {
     }
 
     public String answer(User number) {
-        int strike = number.getStrike(answer);
-        int ball = number.getBall(answer);
+        int strike = number.getStrike(answer.getNumber());
+        int ball = number.getBall(answer.getNumber());
 
         if (strike == 0 && ball == 0) return strike + "S" + ball + "B";
         else if (strike == 0) return ball + "B";
@@ -38,7 +43,7 @@ public class GameController {
         return strike + "S" + ball + "B";
     }
 
-    public boolean isCorrectAnswer(User number) {
-        return number.getNumber().equals(getAnswerNumber());
+    public boolean isCorrectAnswer(String number) {
+        return number.equals(getAnswerNumber());
     }
 }
