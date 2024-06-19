@@ -1,5 +1,6 @@
 package model;
 
+import constants.Constant;
 import validator.Validator;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class Computer {
         do {
             String num = randomInt();
             if (!randomInts.contains(num)) randomInts.add(num);
-        } while (randomInts.size() != 3);
+        } while (randomInts.size() != Constant.NUMBER_SIZE);
 
         return String.join("", randomInts);
     }
