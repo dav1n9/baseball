@@ -23,26 +23,35 @@ public class User {
         this.number = number;
     }
 
-    // number의 스트라이크 개수를 출력한다.
-    public int getStrike(Computer answer) {
+    // number 의 스트라이크 개수를 출력한다.
+    public int getStrike(String answer) {
         int strike = 0;
         for (int i = 0; i < number.length(); i++) {
-            if (number.charAt(i) == answer.getNumber().charAt(i)) strike++;
+            if (isSamePosition(answer.charAt(i), i)) strike++;
         }
         return strike;
     }
 
-    // number의 볼 개수를 출력한다.
-    public int getBall(Computer answer) {
-        List<Character> answerList = new ArrayList<>();
-        for (char c : answer.getNumber().toCharArray()) {
-            answerList.add(c);
-        }
+    // number 의 볼 개수를 출력한다.
+    public int getBall(String answer) {
+        List<Character> answerList = toCharList(answer);
 
         int ball = 0;
         for (int i = 0; i < number.length(); i++) {
-            if (number.charAt(i) != answerList.get(i) && answerList.contains(number.charAt(i))) ball++;
+            if (!isSamePosition(answer.charAt(i), i) && answerList.contains(number.charAt(i))) ball++;
         }
         return ball;
+    }
+
+    private boolean isSamePosition(char charNum, int position) {
+        return number.charAt(position) == charNum;
+    }
+
+    private List<Character> toCharList(String numberStr) {
+        List<Character> list = new ArrayList<>();
+        for (char c : numberStr.toCharArray()) {
+            list.add(c);
+        }
+        return list;
     }
 }

@@ -26,11 +26,11 @@ public class InputView {
             }
             System.out.println(controller.answer(user));
 
-        } while (user == null || !controller.isCorrectAnswer(user));
+        } while (user == null || !controller.isCorrectAnswer(user.getNumber()));
     }
 
     private void startGame() {
         System.out.println("컴퓨터가 숫자를 생성하였습니다. 답을 맞춰보세요!");
-        System.out.println(controller.getAnswerNumber());
+        // System.out.println(controller.getAnswerNumber()); // 정답 출력
     }
 }
